@@ -1,0 +1,21 @@
+COMMANDS:
+sudo apt-get update
+sudo apt-get install python-dev
+sudo apt-get install python-rpi.gpio
+sudo apt-get install git-core
+git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+cd Adafruit_Python_DHT
+sudo apt-get install build-essential python-dev
+sudo python setup.py install
+
+CODE:
+
+#!/usr/bin/python
+import sys
+
+import Adafruit_DHT
+
+humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+
+if humidity is not None and temperature is not None:
+    print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
